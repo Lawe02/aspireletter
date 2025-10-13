@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Supalib.Models; // Reference your class library
 
 namespace webapp.Data
 {
@@ -9,5 +10,8 @@ namespace webapp.Data
             : base(options)
         {
         }
+
+        public DbSet<Resume> Resumes { get; set; }
+        // Add other DbSets as needed
     }
 }
