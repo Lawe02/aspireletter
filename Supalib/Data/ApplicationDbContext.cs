@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Supalib.Models; // Reference your class library
 
-namespace webapp.Data
+namespace Supalib.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

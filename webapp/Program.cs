@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using webapp.Data;
+using Supalib.Data; // Updated namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
