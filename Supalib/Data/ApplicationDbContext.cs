@@ -12,6 +12,16 @@ namespace Supalib.Data
         }
 
         public DbSet<Resume> Resumes { get; set; }
-        // Add other DbSets as needed
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Resume>()
+                .HasOne(r => r.User)
+                .WithMany(u => u.Resumes)
+                .HasForeignKey(r => r.UserId);
+               
+        }
     }
 }
