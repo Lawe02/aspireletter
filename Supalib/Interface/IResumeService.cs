@@ -10,6 +10,6 @@ namespace Supalib.Interface
 {
     public interface IResumeService
     {
-        public Task UpploadResumeASync(ResumeUploadDto dto);
+        public Task UploadResumeAsync(ResumeUploadDto dto, string userid);
     }
 }

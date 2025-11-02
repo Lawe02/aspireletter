@@ -15,7 +15,7 @@ namespace Supalib.Models
         public string ContentType { get; set; }
 
         [Column(TypeName = "varbinary(max)")]
-        public byte Data { get; set; }
+        public byte[] Data { get; set; } = null!;
         public long Size { get; set; }
         public string Content { get; set; }
         public DateTimeOffset UploadedAt { get; set; }
