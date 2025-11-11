@@ -12,11 +12,12 @@ namespace webapp.Pages
         private readonly IResumeService _resumeService;
         private readonly UserManager<ApplicationUser> _userManager;
         
-        public UpploadModel(IResumeService resumeService)
+        public UpploadModel(IResumeService resumeService, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _resumeService = resumeService;
         }
-
+        [BindProperty]
         public ResumeUploadDto Resume { get; set; }
         public void OnGet()
         {

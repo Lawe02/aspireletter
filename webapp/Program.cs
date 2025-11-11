@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Supalib.Data;
-using Supalib.Models; // Updated namespace
+using Supalib.Interface;
+using Supalib.Models;
+using Supalib.Repository;
+using Supalib.Service; // Updated namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,10 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddTransient<IResumeService, ResumeService>(); 
+builder.Services.AddTransient<IResumeRepository, ResumeRepository>();
+builder.Services.AddTransient<UserManager<ApplicationUser>>();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
