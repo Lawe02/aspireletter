@@ -17,7 +17,6 @@ namespace Supalib.Models
         [Column(TypeName = "varbinary(max)")]
         public byte[] Data { get; set; } = null!;
         public long Size { get; set; }
-        public string Content { get; set; }
         public DateTimeOffset UploadedAt { get; set; }
 
         [ForeignKey(nameof(UserId))]
