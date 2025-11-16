@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,6 +8,7 @@ using Supalib.Models;
 
 namespace webapp.Pages
 {
+    [Authorize]
     public class UpploadModel : PageModel
     {
         private readonly IResumeService _resumeService;
@@ -30,7 +32,7 @@ namespace webapp.Pages
             var userId = _userManager.GetUserId(User);
 
             await _resumeService.UploadResumeAsync(Resume, userId);
-            return RedirectToPage("Success");
+            return RedirectToPage(Page());
         }
     }
 }
