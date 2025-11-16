@@ -1,4 +1,5 @@
-﻿using Supalib.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Supalib.Data;
 using Supalib.Interface;
 using Supalib.Models;
 using System;
@@ -20,6 +21,16 @@ namespace Supalib.Repository
         {
             _db.Resumes.Add(resume);
             await _db.SaveChangesAsync();
+        }
+
+        public async Task<Resume> GetResumeAsync(string userId, int resumeId)
+        {
+            var resume = await _db.Resumes
+                .Where(r => r.UserId == userId && r.Id == resumeId)
+                .FirstAsync();
+            if (resume == null)
+                throw new ArgumentNullException("No resume found");
+            return resume!;
         }
     }
 }
