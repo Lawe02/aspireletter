@@ -32,6 +32,15 @@ namespace Supalib.Repository
                 throw new ArgumentNullException("No resume found");
             return resume!;
         }
+
+        public async Task<List<Resume>> GetResumesAsync(string userId)
+        {
+            List<Resume> resumes = await _db.Resumes
+                .Where(resume => resume.UserId == userId)
+                .ToListAsync();
+
+            return resumes;
+        }
     }
 }
 
