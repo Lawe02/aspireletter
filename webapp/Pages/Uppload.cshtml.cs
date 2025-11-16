@@ -32,7 +32,7 @@ namespace webapp.Pages
             var userId = _userManager.GetUserId(User);
 
             await _resumeService.UploadResumeAsync(Resume, userId);
-            return RedirectToPage(Page());
+            return RedirectToPage(Page);
         }
     }
-}
+} 
