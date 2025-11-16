@@ -25,12 +25,13 @@ namespace Supalib.Repository
 
         public async Task<Resume> GetResumeAsync(string userId, int resumeId)
         {
-            var resume = await _db.Resumes
+            Resume resume = await _db.Resumes
                 .Where(r => r.UserId == userId && r.Id == resumeId)
-                .FirstAsync();
+                .FirstOrDefaultAsync();
+
             if (resume == null)
-                throw new ArgumentNullException("No resume found");
-            return resume!;
+                throw new KeyNotFoundException("No resume found");
+            return resume;
         }
 
         public async Task<List<Resume>> GetResumesAsync(string userId)
