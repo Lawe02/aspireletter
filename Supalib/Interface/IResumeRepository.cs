@@ -10,6 +10,7 @@ namespace Supalib.Interface
     public interface IResumeRepository
     {
         public Task SaveResumeAsync(Resume resume);
-        public Task<Resume> GetResumeAsync(String userId, int resumeId);
+        public Task<Resume> GetResumeAsync(string userId, int resumeId);
+        public Task<List<Resume>> GetResumesAsync(string userId);
     }
 }
