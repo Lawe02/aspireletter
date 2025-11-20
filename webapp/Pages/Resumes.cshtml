@@ -2,3 +2,27 @@
 @model webapp.Pages.ResumesModel
 @{
 }
+<table class="table">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Upload Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var resume in Model.Resumes.Resumes)
+    {
+        <tr>
+            <td>@resume.FileName</td>
+            <td>@resume.UpploadedAt.ToString("g")</td>
+            <td>
+                <a asp-page="/DownloadResume" asp-route-id="@resume.Id" class="btn btn-primary">Download</a>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@resume.Id" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+

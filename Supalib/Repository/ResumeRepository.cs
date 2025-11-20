@@ -36,9 +36,9 @@ namespace Supalib.Repository
 
         public async Task<List<Resume>> GetResumesAsync(string userId)
         {
-            List<Resume> resumes = await _db.Resumes
+            List<Resume> resumes = _db.Resumes
                 .Where(resume => resume.UserId == userId)
-                .ToListAsync();
+                .ToList();
 
             return resumes;
         }
