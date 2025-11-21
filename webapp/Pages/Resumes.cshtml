@@ -7,7 +7,8 @@
         <tr>
             <th>File Name</th>
             <th>Upload Date</th>
-            <th>Actions</th>
+            <th>Size</th>
+            <th>Actions</th> 
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <td>@resume.UpploadedAt.ToString("g")</td>
             <td>
                 <a asp-page="/DownloadResume" asp-route-id="@resume.Id" class="btn btn-primary">Download</a>
+                <a asp-page="/ViewResume" asp-route-id="@resume.Id" class="btn btn-primary">View</a>
                 <form method="post" asp-page-handler="Delete" asp-route-id="@resume.Id" style="display:inline;">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
