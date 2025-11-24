@@ -1,0 +1,8 @@
+﻿@page
+@model webapp.Pages.ViewResumeModel
+@{
+}
+<a href="/Resumes" class="btn btn-primary">Back</a>
+<iframe src="/ViewResume?handler=Resume&id=@Model.ResumeId"
+        width="100%" height="800px">
+</iframe>
